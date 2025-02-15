@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゲームサービス案内</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <!-- ゲームロゴ画像を表示（logo.pngを用意してください） -->
+        <!-- <img src="logo.png" alt="ゲームロゴ" class="logo"> -->
+        <h1>ゲームサービス案内</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#features">特徴</a></li>
+                <li><a href="#gallery">ギャラリー</a></li>
+                <li><a href="#download">ダウンロード</a></li>
+                <li><a href="#news">ニュース</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">🌙</button>
+        <select id="language-switcher">
+            <option value="ja">日本語</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+        </select>
+    </header>
+    
+    <section id="home">
+        <h2>ゲーム概要</h2>
+        <p>このゲームはエキサイティングな冒険を提供します！</p>
+    </section>
+    
+    <section id="features">
+        <h2>特徴</h2>
+        <div class="feature-slider"> 
+            <div class="feature">アクション満載</div>
+            <div class="feature">戦略的プレイ</div>
+            <div class="feature">美しいグラフィック</div>
+        </div>
+    </section>
+    
+    <section id="gallery">
+        <h2>スクリーンショット・動画</h2>
+        <div class="gallery-container">
+            <!-- スクリーンショット画像を追加するには、以下のコメントを参考にしてください -->
+            <!-- <img src="screenshot1.jpg" alt="スクリーンショット1"> -->
+            <!-- <img src="screenshot2.jpg" alt="スクリーンショット2"> -->
+            <!-- <img src="screenshot3.jpg" alt="スクリーンショット3"> -->
+        </div>
+        <!-- YouTubeの埋め込み予定の場所 -->
+        <!-- <iframe src="" allowfullscreen></iframe> -->
+    </section>
+    
+    <section id="download">
+        <h2>ダウンロード</h2>
+        <p>推奨スペック:</p>
+        <ul>
+            <li>OS: Windows 10 64bit</li>
+            <li>CPU: Intel Core i5 以上</li>
+            <li>RAM: 8GB 以上</li>
+            <li>GPU: NVIDIA GTX 1050 以上</li>
+        </ul>
+        <a href="game.exe" download>Windows版をダウンロード</a>
+        
+        <h3>ウェブゲームプレイ</h3>
+        <iframe src="https://scratch.mit.edu/projects/1134343835/embed" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+    </section>
+    
+    <section id="news">
+        <h2>ニュース</h2>
+        <div id="news-list"></div>
+    </section>
+    
+    <section id="roadmap">
+        <h2>開発ロードマップ</h2>
+        <ul>
+            <li>2025年3月 - 新ステージ追加</li>
+            <li>2025年6月 - オンライン対戦機能追加</li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>© 2025 ゲームサービス</p>
+    </footer>
+
+    <script>
+        // ダークモード / ライトモード切り替え
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Firebase ニュース投稿機能（仮のコード）
+        // Firebaseのセットアップが必要
+        const newsList = document.getElementById('news-list');
+        function fetchNews() {
+            // Firebaseからデータ取得する処理（仮）
+            newsList.innerHTML = '<p>ニュースを取得中...</p>';
+        }
+        fetchNews();
+
+        // スライダーの動作実装
+        document.addEventListener("DOMContentLoaded", function () {
+            let index = 0;
+            const features = document.querySelectorAll(".feature");
+            function showNextFeature() {
+                features[index].classList.remove("active");
+                index = (index + 1) % features.length;
+                features[index].classList.add("active");
+            }
+            setInterval(showNextFeature, 3000);
+        });
+    </script>
+</body>
+</html>
